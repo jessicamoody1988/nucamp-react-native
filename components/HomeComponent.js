@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, ScrollView, Text } from 'react-native';
 import { Card } from 'react-native-elements';
+
 import { CAMPSITES } from '../shared/campsites';
 import { PROMOTIONS } from '../shared/promotions';
 import { PARTNERS } from '../shared/partners';
-import { render } from 'react-dom';
-
 
 function RenderItem({ item }) {
     if (item) {
