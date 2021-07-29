@@ -12,7 +12,6 @@ import Contact from './ContactComponent'
 import Directory from './DirectoryComponent'
 import CampsiteInfo from './CampsiteInfoComponent';
 import Home from './HomeComponent';
-import { styleSheets } from 'min-document';
 
 const DirectoryNavigator = createStackNavigator(
     {
