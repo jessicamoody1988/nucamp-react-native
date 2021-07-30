@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
   Button,
+  Modal,
   Picker,
   ScrollView,
   StyleSheet,
@@ -19,7 +20,8 @@ class Reservation extends Component {
           campers: 1,
           hikeIn: false,
           date: new Date(),
-          showCalendar: false
+          showCalendar: false,
+          showModal: false
       };
   }
 
@@ -27,8 +29,16 @@ class Reservation extends Component {
       title: 'Reserve Campsite'
   }
 
+  toggleModal() {
+      this.setState({showModal: !this.state.showModal});
+  }
+
   handleReservation() {
       console.log(JSON.stringify(this.state));
+      this.toggleModal();
+  }
+
+  resetForm() {
       this.setState({
           campers: 1,
           hikeIn: false,
@@ -94,6 +104,35 @@ class Reservation extends Component {
                       accessibilityLabel='Tap me to search for available campsites to reserve'
                   />
               </View>
+              <Modal
+                animationType={'slide'}
+                transparent={false}
+                visible={this.state.showModal}
+                onRequestClose={() => this.toggleModal()}
+              >
+                <View style={styles.modal}>
+                    <Text style={styles.modalTitle}>
+                        Search Campsite Reservations
+                    </Text>
+                    <Text style={styles.modalText}>
+                        Number of Campers: {this.state.campers}
+                    </Text>
+                    <Text style={styles.modalText}>
+                        Hike-In?: {this.state.hikeIn ? 'Yes' : 'No'}
+                    </Text>
+                    <Text style={styles.modalText}>
+                        Date: {this.state.date.toLocaleDateString('en-US')}
+                    </Text>
+                    <Button
+                        onPress={() => {
+                            this.toggleModal();
+                            this.resetForm();
+                        }}
+                        color='#5637DD'
+                        title='Close'
+                    />
+                </View>
+              </Modal>
           </ScrollView>
       );
   }
@@ -113,6 +152,22 @@ const styles = StyleSheet.create({
   },
   formItem: {
       flex: 1
+  },
+  modal: {
+      justifyContent: 'center',
+      margin: 20
+  },
+  modalTitle: {
+      fontSize: 24,
+      fontWeight: 'bold',
+      backgroundColor: '#5637DD',
+      textAlign: 'center',
+      color: 'white',
+      marginBottom: 20
+  },
+  modalText: {
+      fontSize: 18,
+      margin: 10
   }
 });
 
