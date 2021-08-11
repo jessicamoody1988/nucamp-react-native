@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
         padding: 2
     },
     formCheckbox: {
-        margin: 8,
+        margin: 2,
         backgroundColor: null
     },
     formButton: {
