@@ -67,7 +67,7 @@ function RenderCampsite(props) {
                     { cancelable: false }
                 );
             } else if (recognizeComment(gestureState)) {
-                <CampsiteInfo onShowModal={true} />
+                props.onShowModal()
             }
             return true;
         }
@@ -136,7 +136,7 @@ function RenderComments({comments}) {
     return (
         <Animatable.View 
             animation='fadeInUp' 
-            durati8on={2000} 
+            duration={2000} 
             delay={1000}
         >
             <Card title='Comments'>
