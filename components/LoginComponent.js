@@ -187,7 +187,8 @@ class RegisterTab extends Component {
 
     getImageFromGallery = async () => {
         const cameraRollPermissions = await Permissions.askAsync(Permissions.CAMERA_ROLL);
-        if (cameraRollPermissions === 'granted') {
+
+        if (cameraRollPermissions.status === 'granted') {
             const capturedImage = await ImagePicker.launchImageLibraryAsync({
                 allowsEditing: true,
                 aspect: [1, 1]
